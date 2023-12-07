@@ -15,5 +15,5 @@ typedef enum {
     INST_NOP=0,
     INST_ADD=1,
     INST_SUB=2,
-    INST_MOV=3,
+    INST_LDI1=3,
 } instructions;
