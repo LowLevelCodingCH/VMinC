@@ -12,3 +12,10 @@ char i_set[5] = {
     00000001 00000001
     Mov r1, 1
 */
+
+typedef enum {
+    // added no-op as its useful
+    INST_NOP=0,
+    INST_ADD=1,
+    INST_SUB=2,
+} instructions;
