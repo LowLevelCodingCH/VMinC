@@ -21,6 +21,8 @@ INT15H:
             CMP R5, R6
             JZ END15H
             NOP
+        END15H:
+            NOP
 
 INT16H:
     READCHAR:
