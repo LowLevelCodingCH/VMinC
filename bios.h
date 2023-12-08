@@ -7,6 +7,6 @@ struct interrupts{
 
     struct int1h {
         // display the "CHAR" in r1 to the screen
-        putc(cpu.registers.R1); // josh: ALWAYS REMEMBER SEMICOLONS // llcch: OKAY SORRY
+        putc(cpu.registers.R1); // josh: ALWAYS REMEMBER SEMICOLONS // llcch: OKAY SORRY // llcch: OKAY WE GONNA STOP WITH BIOS.C AND CONTINUE IN BIOS.ASM
     };
 };
