@@ -7,6 +7,6 @@ struct interrupts{
 
     struct int10h {
         // display the "CHAR" in r1 to the screen
-        putc(cpu.registers.R1)
+        putc(cpu.registers.R1); // josh: ALWAYS REMEMBER SEMICOLONS
     };
 };
