@@ -92,5 +92,6 @@ typedef enum {
     INST_DEL=49, // delete some register / clear some register
 
     INST_CDO=50, // call display output to display something (BIOS ONLY)
+    INST_KGI=51, // get keyboard input (BIOS ONLY)
 
 } instructions;
