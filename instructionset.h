@@ -3,7 +3,7 @@
     Basic program:
     (Adds 1 to the r1 register.)
     03 01 
-    00000003 00000001
+    00000010 00000001 // binary c sys
     Mov r1, 1
 */
 
