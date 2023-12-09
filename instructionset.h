@@ -89,9 +89,9 @@ typedef enum {
     INST_PUSHI=47, // push immediate
     INST_POP=48, // pop
 
-    INST_DEL=49, // delete some register / clear some register
+    INST_DEL=49, //llcch delete some register / clear some register
 
-    INST_CDO=50, // call display output to display something (BIOS ONLY)
-    INST_KGI=51, // get keyboard input (BIOS ONLY)
+    INST_CDO=50, //llcch call display output to display something (BIOS ONLY)
+    INST_KGI=51, //llcch get keyboard input (BIOS ONLY)
 
 } instructions;
