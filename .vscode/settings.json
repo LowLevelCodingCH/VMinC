@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.css": "css",
+        "*.rs": "rust",
+        "*.mn": "minimal",
+        "sdl_init.h": "c",
+        "sdl.h": "c"
+    }
+}
