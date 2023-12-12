@@ -19,7 +19,7 @@ typedef enum {
     INST_ADD=1, // add
     INST_SUB=2, // subtract
 
-    MOV=3,
+    INST_MOV=3, // move
 
     INST_JMP=83, // jump
     INST_JC=84, // jump carry
