@@ -6,14 +6,14 @@ struct cpu
     struct registers
     {
         // INITIALIZE: r1 r2 r3 r4 r5 r6 r7 r8
-        char A = 0x00;
-        char B = 0x00;
-        char C = 0x00;
-        char D = 0x00;
-        char E = 0x00;
-        char F = 0x00;
-        char G = 0x00;
-        char H = 0x00;
+        char R1 = 0x00;
+        char R2 = 0x00;
+        char R3 = 0x00;
+        char R4 = 0x00;
+        char R5 = 0x00;
+        char R6 = 0x00;
+        char R7 = 0x00;
+        char R8 = 0x00;
     };
 };
 
