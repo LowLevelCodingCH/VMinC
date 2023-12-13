@@ -50,6 +50,7 @@ typedef enum {
 
     INST_CDO=28, //llcch call display output to display something (BIOS ONLY)
     INST_KGI=29, //llcch get keyboard input (BIOS ONLY)
+    INST_LDR=30, //llcch load into RAM memory
 
 } instructions;
 
