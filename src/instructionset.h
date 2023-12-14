@@ -31,7 +31,7 @@ typedef enum {
     INST_BSL=13, // bit shift left
     INST_CMP=14, // compare
 
-    MOV=16,
+    MOV=16, // moves a value into a register
 
     INST_JMP=17, // jump
     INST_JC=18, // jump carry
