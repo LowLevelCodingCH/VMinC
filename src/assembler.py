@@ -64,3 +64,5 @@ with open(fname, "r") as filestream:
         FLinesIterator("ldr", "30")
 
         iterator += 1
+    with open(argv[2], "w") as outfile:
+        outfile.write(''.join(flines))
