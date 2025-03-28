@@ -18,39 +18,39 @@ typedef enum {
 
     INST_ADD=1, // add
     INST_SUB=2, // subtract
+    INST_DIV=3, // divide
+    INST_IDIV=4, // signed divide
+    INST_MUL=5, // multiply
+    INST_IMUL=6, // signed multiply
+    INST_AND=7, // AND
+    INST_OR=8, // OR
+    INST_NOT=9, // NOT
+    INST_INEG=10, // signed negation
+    INST_XOR=11, // XOR
+    INST_BSR=12, // bit shift right
+    INST_BSL=13, // bit shift left
+    INST_CMP=14, // compare
 
-    INST_MOV=3, // move
+    MOV=16, // moves a value into a register
 
-    INST_JMP=83, // jump
-    INST_JC=84, // jump carry
-    INST_JNC=85, // jump not carry
-    INST_JZ=86, // jump zero
-    INST_JNZ=87, // jump not zero
+    INST_JMP=17, // jump
+    INST_JC=18, // jump carry
+    INST_JNC=19, // jump not carry
+    INST_JZ=20, // jump zero
+    INST_JNZ=21, // jump not zero
 
-    INST_CALL=88, // call
-    INST_RET=89, // return
+    INST_CALL=22, // call
+    INST_RET=23, // return
 
-    INST_DIV=90, // divide
-    INST_IDIV=91, // signed divide
-    INST_MUL=92, // multiply
-    INST_IMUL=93, // signed multiply
-    INST_AND=94, // AND
-    INST_OR=95, // OR
-    INST_NOT=96, // NOT
-    INST_INEG=97, // signed negation
-    INST_XOR=98, // XOR
-    INST_BSR=99, // bit shift right
-    INST_BSL=100, // bit shift left
-    INST_CMP=101, // compare
+    INST_PUSH=24, // push
+    INST_PUSHI=25, // push immediate
+    INST_POP=26, // pop
 
-    INST_PUSH=102, // push
-    INST_PUSHI=103, // push immediate
-    INST_POP=104, // pop
+    INST_DEL=27, //llcch delete some register / clear some register
 
-    INST_DEL=105, //llcch delete some register / clear some register
-
-    INST_CDO=106, //llcch call display output to display something (BIOS ONLY)
-    INST_KGI=107, //llcch get keyboard input (BIOS ONLY)
+    INST_CDO=28, //llcch call display output to display something (BIOS ONLY)
+    INST_KGI=29, //llcch get keyboard input (BIOS ONLY)
+    INST_LDR=30, //llcch load into RAM memory
 
 } instructions;
 
