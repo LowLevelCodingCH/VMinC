@@ -1,5 +1,8 @@
-#include "sdl_init.h"
-#include "sdl_graphics.h"
+#include "graphics/sdl_init.h"
+#include "graphics/sdl_graphics.h"
+#include "graphics/sdl_error.h"
+#include "charset_debug.c"
+#include "charset.c"
 
 int main(int argc, char *argv[]) {
     if (init_SDL("works omg", 640, 480))
