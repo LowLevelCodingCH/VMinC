@@ -7,8 +7,6 @@
 void G_error() {
     const char* error = SDL_GetError();
 
-    if (!*error) return;
-
     printf("SDL error:\n%s", error);
 
     SDL_Quit();
