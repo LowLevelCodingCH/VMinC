@@ -2,6 +2,7 @@
 #define SDL_text_h
 
 #include <graphics/sdl_graphics.h>
+#include <graphics/sdl_init.h>
 
 SDL_Texture *G_videomem = NULL;
 
