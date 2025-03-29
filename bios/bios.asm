@@ -1,42 +1,32 @@
-INT10H:
-    CMP R4, 0x0E
-    JZ DISPLAYCHAR
-    JMP CONTINUE01
-    DISPLAYCHAR:
-        ADD R1, 0xFFC0
-        C1T2
-        SUB R2, 0xFFC0
-        ; now getting ready: DISPLAY CHARACTER IN R3
-        C2T3
-        NOP
-        DEL R1
-        DEL R2
-        CDO R3
-        NOP
-        DEL R3
-    CONTINUE01:
-        NOP
+;; NOTE THAT THIS IS NOT OUR ARCH, BUT AN INTEL-ARM-RISCV-AND_MY_OWN MIX
+;; THIS IS INBRED
+;; AND JUST TO SHOW WHAT IT WOULD LOOK LIKE
 
-INT15H:
-    CMP R4, 0x86
-    JZ WAITSEC
-    JMP CONTINUE02
-    WAITSEC:
-        CALL WAITTIME
-        WAITTIME:
-            CMP R5, R6
-            JZ END15H
-            NOP
-        END15H:
-            NOP
-    CONTINUE02:
-        NOP
+bios_SETUP: ; Will get called, Immediately.
+    call init_ivt ; Loads interrupts for CPU
+    ret
 
-INT16H:
-    CMP R4, 0x00
-    JZ READCHAR
-    JMP CONTINUE03
-    READCHAR:
-        KGI R5
-    CONTINUE03:
-        NOP
+isr0:
+    pusha
+    cli
+        mov [0xB8000 + ah], byte al
+    sti
+    popa
+    ret ; iret for intel
+
+isr1:
+    pusha
+    cli
+        mov [0xA0000], byte al
+    sti
+    popa
+    ret ; iret for intel
+
+ivt: ; Possible IVT
+    call isr0
+    call isr1
+    ; ...
+
+init_ivt:
+    livt [ivt] ; Interrupt vector table
+    ret

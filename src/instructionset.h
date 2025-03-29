@@ -1,57 +1,59 @@
 #ifndef INSTRUCTIONSET_h_
 #define INSTRUCTIONSET_h_
 
-/*
-    Basic program:
-    (Adds 1 to the r1 register.)
-    03 01
-    00000010 00000001 // binary c sys
-    Mov r1, 1
-*/
-
-// added by josh
-// example:
-// 0x3, 0x1, 0x71 (set R1 to 1)
 typedef enum {
-    // added no-op as its useful // llcch: added some more loads
-    INST_NOP=0, // no operation
+    INST_NOP = 0,
 
-    INST_ADD=1, // add
-    INST_SUB=2, // subtract
-    INST_DIV=3, // divide
-    INST_IDIV=4, // signed divide
-    INST_MUL=5, // multiply
-    INST_IMUL=6, // signed multiply
-    INST_AND=7, // AND
-    INST_OR=8, // OR
-    INST_NOT=9, // NOT
-    INST_INEG=10, // signed negation
-    INST_XOR=11, // XOR
-    INST_BSR=12, // bit shift right
-    INST_BSL=13, // bit shift left
-    INST_CMP=14, // compare
+    INST_ADD,
+    INST_SUB,
+    INST_DIV,
+    INST_IDIV,
+    INST_MUL,
+    INST_IMUL,
+    INST_AND,
+    INST_OR,
+    INST_NOT,
+    INST_INEG,
+    INST_XOR,
+    INST_BSR,
+    INST_BSL,
+    INST_CMP,
 
-    MOV=16, // moves a value into a register
+    LR1,   // Load into registers (1-8)
+    LR2,   // Load immediates btw
+    LR3,
+    LR4,
+    LR5,
+    LR6,
+    LR7,
+    LR8,
 
-    INST_JMP=17, // jump
-    INST_JC=18, // jump carry
-    INST_JNC=19, // jump not carry
-    INST_JZ=20, // jump zero
-    INST_JNZ=21, // jump not zero
+    RCPY, // Copy from a memory address stored in a register into a register (Reverse copy)
+	   // Example
+	   //     rcpy r1, r2 ; Copy into r1 the value that is in ram at address of the value r2
 
-    INST_CALL=22, // call
-    INST_RET=23, // return
+    CPYR, // Copy registers
+	  // Example
+	  //     cpyr r1, r2 ; Copy into r1 the value that r2 posesses (I speak premium English)
 
-    INST_PUSH=24, // push
-    INST_PUSHI=25, // push immediate
-    INST_POP=26, // pop
+    CPY, // Copy data from one register to a memory address (specified by another register)
+         // Example:
+         //     cpy r1, r2   ; Copy into the memory address specified by r1 the value of r2
 
-    INST_DEL=27, //llcch delete some register / clear some register
+    INST_JMP,
+    INST_JC,
+    INST_JNC,
+    INST_JZ,
+    INST_JNZ,
 
-    INST_CDO=28, //llcch call display output to display something (BIOS ONLY)
-    INST_KGI=29, //llcch get keyboard input (BIOS ONLY)
-    INST_LDR=30, //llcch load into RAM memory
+    INST_CALL,
+    INST_RET,
 
+    INST_PUSH,
+    INST_PUSHI,
+    INST_POP,
+
+    INST_DEL,
 } instructions;
 
 #endif
