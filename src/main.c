@@ -1,11 +1,12 @@
 #include "graphics/sdl_init.h"
 #include "graphics/sdl_graphics.h"
 #include "graphics/sdl_error.h"
-#include "graphics/sdl_text.h"
+#include "graphics/sdl_videomem.h"
 #include "charset_debug.c"
 #include "charset.c"
 
 #include <stdlib.h>
+#include <string.h>
 
 void quit() {
     // Delete video memory
@@ -33,14 +34,11 @@ int main(int argc, char *argv[]) {
 
     // example sdl code
     G_initVideomem(640, 480);
-    G_useVideomem();
-
-    G_setDrawColor(0x00FF00FF);
     
     int xOffset = 0, yOffset = 0; 
 
     for (int i = 0; i < 96; i++) {
-        G_writeChar(i, xOffset, yOffset, charset);
+        G_writeChar(xOffset, yOffset, charset[i], 0x00FF00FF);
 
         if (xOffset++ == 39) {
             xOffset = 0;
@@ -52,7 +50,7 @@ int main(int argc, char *argv[]) {
     xOffset = 0;
 
     for (int i = 0; i < 96; i++) {
-        G_writeChar(i, xOffset, yOffset, charset_debug);
+        G_writeChar(xOffset, yOffset, charset_debug[i], 0x00FF00FF);
 
         if (xOffset++ == 39) {
             xOffset = 0;
