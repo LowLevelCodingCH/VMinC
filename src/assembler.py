@@ -45,10 +45,8 @@ with open(fname, "r") as filestream:
         FLinesIterator("idiv", "4")
         FLinesIterator("mul", "5")
         FLinesIterator("imul", "6")
-        #and or not ineg xor bsr bsl
-        FLinesIterator("cmp", "14")
-
-        FLinesIterator("mov", "16") #what the fuck bro, why, 14 to 16, but okay fuckers
+        FLinesIterator("cmp", "7")
+        FLinesIterator("mov", "8")
         
         #jmp jc jnc jz jnz
 
