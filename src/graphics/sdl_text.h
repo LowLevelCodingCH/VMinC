@@ -77,13 +77,6 @@ int G_render() {
         return 1;
 
     // Update screen
-    G_strechScreen();
-
-    if (SDL_RenderCopy(G_SDLrenderer, G_videomem, NULL, NULL))
-        G_error();
-
-    SDL_RenderPresent(G_SDLrenderer);
-
     if (SDL_SetRenderTarget(G_SDLrenderer, NULL))
         G_error();
 
