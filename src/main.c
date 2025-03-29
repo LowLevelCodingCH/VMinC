@@ -9,13 +9,8 @@ int main(int argc, char *argv[]) {
     G_initSDL("works lessgo", 640, 480);
 
     // example sdl code
-    SDL_Texture *videomem = SDL_CreateTexture(G_SDLrenderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_TARGET, 640, 480);
-
-    if (!videomem)
-        G_error();
-
-    if (SDL_SetRenderTarget(G_SDLrenderer, videomem))
-        G_error();
+    G_initVideomem(640, 480);
+    G_useVideomem();
 
     G_setDrawColor(0x00FF00FF);
     
@@ -34,7 +29,7 @@ int main(int argc, char *argv[]) {
     xOffset = 0;
 
     for (int i = 0; i < 96; i++) {
-        G_writeChar(i, xOffset, yOffset, charset);
+        G_writeChar(i, xOffset, yOffset, charset_debug);
 
         if (xOffset++ == 39) {
             xOffset = 0;
@@ -61,26 +56,10 @@ int main(int argc, char *argv[]) {
         if (e.type == SDL_KEYUP)
             {} // handle keyup
 
-        // Update screen
-        G_strechScreen();
-
-        if (SDL_RenderCopy(G_SDLrenderer, videomem, NULL, NULL))
-            G_error();
-
-        SDL_RenderPresent(G_SDLrenderer);
-
-        if (SDL_SetRenderTarget(G_SDLrenderer, NULL))
-            G_error();
-
-        // Draw the texture
-        if (SDL_RenderCopy(G_SDLrenderer, videomem, NULL, NULL))
-            G_error();
-
-        // Draw on the screen
-        SDL_RenderPresent(G_SDLrenderer);
+        G_render();
     }
 
-    SDL_DestroyTexture(videomem);
+    G_deleteVideomem();
 
     G_quitSDL();
 }
