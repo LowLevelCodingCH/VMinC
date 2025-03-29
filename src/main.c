@@ -9,6 +9,8 @@
 
 #include <stdlib.h>
 
+static int fps = 25;
+
 void quit() {
     // Delete video memory
     G_deleteVideomem();
