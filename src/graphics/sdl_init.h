@@ -10,6 +10,15 @@ static SDL_Renderer *G_SDLrenderer;
 
 static int G_width, G_height;
 
+/**
+ * Initializes SDL window and renderer.
+ * 
+ * Calls `G_error` on error.
+ * 
+ * @param name window title
+ * @param width window width
+ * @param height window height
+ */
 void G_initSDL(char *name, int width, int height) {
     if (SDL_Init(SDL_INIT_VIDEO)) {
         printf("SDL could not be initialized!\n");
