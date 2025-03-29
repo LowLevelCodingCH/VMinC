@@ -8,7 +8,8 @@
 #include "charset.c"
 
 #include <stdlib.h>
-#include <string.h>
+
+static int fps = 25;
 
 static int fps = 25;
 
