@@ -5,6 +5,29 @@
 #include "charset_debug.c"
 #include "charset.c"
 
+#include <stdlib.h>
+
+void quit() {
+    // Delete video memory
+    G_deleteVideomem();
+
+    G_quitSDL();
+
+    exit(0);
+}
+
+void handleEvent(SDL_Event e) {
+    // User requests quit
+    if (e.type == SDL_QUIT)
+        quit();
+
+    if (e.type == SDL_KEYDOWN)
+        {} // handle keydown
+    if (e.type == SDL_KEYUP)
+        {} // handle keyup
+
+}
+
 int main(int argc, char *argv[]) {
     G_initSDL("works lessgo", 640, 480);
 
@@ -43,23 +66,12 @@ int main(int argc, char *argv[]) {
     for (;;) {
         // run instruction
 
-        SDL_Event e;
-        if (!SDL_WaitEventTimeout(&e, 1000/60))
-            G_error();
-
-        // User requests quit
-        if (e.type == SDL_QUIT)
-            break;
-        
-        if (e.type == SDL_KEYDOWN)
-            {} // handle keydown
-        if (e.type == SDL_KEYUP)
-            {} // handle keyup
+        SDL_Event event;
+        while (SDL_PollEvent(&event))
+            handleEvent(event);
 
         G_render();
     }
 
-    G_deleteVideomem();
-
-    G_quitSDL();
+    quit();
 }
