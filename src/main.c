@@ -12,7 +12,6 @@
 
 #include <pthread.h>
 
-static int fps = 25;
 static pthread_t emulator_thread;
 
 void quit() {
@@ -91,17 +90,10 @@ int main(int argc, char *argv[]) {
         Uint64 ticksStart = SDL_GetTicks64();
 
         SDL_Event event;
-        while (SDL_PollEvent(&event))
-            handleEvent(event);
+        if (!SDL_WaitEvent(&event))
+            G_error();
 
-        G_render();
-
-        Uint64 ticksEnd = SDL_GetTicks64();
-
-        Uint64 ticksPassed = ticksEnd - ticksStart;
-        Uint64 ticksLeft = ticksPassed * 1000 / fps;
-
-        SDL_Delay(ticksLeft);
+        handleEvent(event);
     }
 
     quit();
