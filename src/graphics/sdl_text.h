@@ -36,6 +36,9 @@ int G_initVideomem(int w, int h) {
     if (G_videomem)
         return 1;
 
+    G_width = w;
+    G_height = h;
+
     G_videomem = SDL_CreateTexture(G_SDLrenderer, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_TARGET, w, h);
 
     if (!G_videomem) {
