@@ -10,14 +10,19 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <pthread.h>
+
 static int fps = 25;
+static pthread_t emulator_thread;
 
 void quit() {
     // Delete video memory
     G_deleteVideomem();
-
+    
     G_quitSDL();
 
+    pthread_join(emulator_thread, NULL);
+    
     exit(0);
 }
 
@@ -38,6 +43,14 @@ void handleEvent(SDL_Event e) {
             free(data);
         }
     }
+}
+
+void* emulate() {
+    while (G_videomem) {
+        // implement emulator here
+        SDL_Delay(10);
+    }
+    return NULL;
 }
 
 int main(int argc, char *argv[]) {
@@ -70,6 +83,8 @@ int main(int argc, char *argv[]) {
     }
 
     // end example sdl code
+
+    pthread_create(&emulator_thread, NULL, emulate, NULL);
 
     // Execution loop
     for (;;) {
