@@ -74,7 +74,7 @@ void G_deleteVideomem() {
  * @param c character entry in charset
  * @param color RGBA color of character
  */
-void G_writeChar(int x, int y, char c[256], Uint32 color) {
+void G_writeChar(int x, int y, const char c[256], Uint32 color) {
     SDL_Rect rect = { x * 16, y * 16, 16, 16 };
 
     char *pixels;
