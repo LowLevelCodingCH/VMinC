@@ -14,7 +14,6 @@
 void G_error() {
     const char* error = SDL_GetError();
 
-    printf("what\n");
     printf("SDL error:\n%s\n", error);
 
     SDL_Quit();
