@@ -65,6 +65,8 @@ int G_useVideomem() {
  * Renders the video memory.
  * 
  * This stretches the video memory over the screen.
+ * 
+ * @warning Only call this function from the main thread.
  */
 int G_render() {
     if (!G_videomem)
