@@ -1,6 +1,7 @@
 #include "graphics/sdl_init.h"
 #include "graphics/sdl_graphics.h"
 #include "graphics/sdl_error.h"
+#include "graphics/sdl_text.h"
 #include "charset_debug.c"
 #include "charset.c"
 
@@ -21,14 +22,9 @@ int main(int argc, char *argv[]) {
     int xOffset = 0, yOffset = 0; 
 
     for (int i = 0; i < 96; i++) {
-        for (int j = 0; j < 16; j++) {
-            for (int k = 0; k < 16; k++) {
-                G_setDrawColor(0x00FF00FF * charset_debug[i][j + k * 16]);
+        G_writeChar(i, xOffset, yOffset, charset);
 
-                G_setPixel(j + xOffset * 16, k + yOffset * 16);
-            }
-        }
-        if (xOffset++ == 40) {
+        if (xOffset++ == 39) {
             xOffset = 0;
             yOffset++;
         }
@@ -38,14 +34,9 @@ int main(int argc, char *argv[]) {
     xOffset = 0;
 
     for (int i = 0; i < 96; i++) {
-        for (int j = 0; j < 16; j++) {
-            for (int k = 0; k < 16; k++) {
-                G_setDrawColor(0x00FF00FF * charset[i][j + k * 16]);
+        G_writeChar(i, xOffset, yOffset, charset);
 
-                G_setPixel(j + xOffset * 16, k + yOffset * 16);
-            }
-        }
-        if (xOffset++ == 40) {
+        if (xOffset++ == 39) {
             xOffset = 0;
             yOffset++;
         }
