@@ -29,17 +29,4 @@ void G_setDrawColor(uint32_t color) {
         G_error();
 }
 
-/**
- * Sets rendering scale such that the video memory takes up the whole window.
- */
-void G_strechScreen() {
-    int width, height;
-    SDL_GetWindowSize(G_SDLwindow, &width, &height);
-
-    float scaleX = (float)width / G_width;
-    float scaleY = (float)height / G_height;
-    if (SDL_RenderSetScale(G_SDLrenderer, scaleX, scaleY))
-        G_error();
-}
-
 #endif
