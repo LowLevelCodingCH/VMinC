@@ -12,14 +12,14 @@ def compile_charset(filename):
 
     for row in range(8):
         for col in range(12):
-            out += "\n    { "
+            # out += "\n    "
+            out += "{"
 
             for row1 in range(0, 16):
                 for col1 in range(0, 16):
-                    out += f"{color_to_num(bitmap[row * 16 + row1, col * 16 + col1])}, "
-                out += "\n      "
+                    out += f"{color_to_num(bitmap[row * 16 + row1, col * 16 + col1])},"
+                # out += "\n      "
 
-            out = out[:-2]
             out += "},"
 
     return out + "}"
