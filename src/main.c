@@ -2,11 +2,15 @@
 #include "graphics/sdl_graphics.h"
 #include "graphics/sdl_error.h"
 #include "graphics/sdl_videomem.h"
+#include "graphics/sdl_event.h"
+
 #include "charset_debug.c"
 #include "charset.c"
 
 #include <stdlib.h>
 #include <string.h>
+
+static int fps = 25;
 
 void quit() {
     // Delete video memory
@@ -21,12 +25,19 @@ void handleEvent(SDL_Event e) {
     // User requests quit
     if (e.type == SDL_QUIT)
         quit();
-
-    if (e.type == SDL_KEYDOWN)
+    else if (e.type == SDL_KEYDOWN)
         {} // handle keydown
-    if (e.type == SDL_KEYUP)
+    else if (e.type == SDL_KEYUP)
         {} // handle keyup
+    else if (e.type == SDL_USEREVENT) {
+        if (e.user.code == 37) {
+            G_WriteCharEventData *data = e.user.data1;
 
+            G_writeChar(data->x, data->y, data->c, data->color);
+
+            free(data);
+        }
+    }
 }
 
 int main(int argc, char *argv[]) {
@@ -62,13 +73,20 @@ int main(int argc, char *argv[]) {
 
     // Execution loop
     for (;;) {
-        // run instruction
+        Uint64 ticksStart = SDL_GetTicks64();
 
         SDL_Event event;
         while (SDL_PollEvent(&event))
             handleEvent(event);
 
         G_render();
+
+        Uint64 ticksEnd = SDL_GetTicks64();
+
+        Uint64 ticksPassed = ticksEnd - ticksStart;
+        Uint64 ticksLeft = ticksPassed * 1000 / fps;
+
+        SDL_Delay(ticksLeft);
     }
 
     quit();
